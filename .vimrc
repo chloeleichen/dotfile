@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'w0rp/ale'
      Plug 'junegunn/fzf.vim'
      Plug 'pangloss/vim-javascript'
+     Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'} "require cmake, run brew update brew install cmake
 call plug#end()
 
 syntax on
@@ -24,9 +25,10 @@ set showmatch
 set incsearch
 set hlsearch 
 set foldenable 
+set hidden
 set foldlevelstart=10
 set foldnestmax=10
-
+set backspace=2 " make backspace work like most other programs
 set lazyredraw              " don't redraw whilst running macros
 set expandtab               " insert spaces when hitting TABs
 
@@ -65,9 +67,9 @@ autocmd FileType css set textwidth=79
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " JavaScript (tab width 4 chr, wrap at 79th)
-autocmd FileType javascript set sw=4
-autocmd FileType javascript set ts=4
-autocmd FileType javascript set sts=4
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
@@ -76,6 +78,14 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
+" Start autocompletion after 4 chars
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+" Don't show YCM's preview window [ I find it really annoying ]
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 
 let g:ale_linters = {'javascript': ['eslint']}
 
