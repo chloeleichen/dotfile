@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.vim/plugged')
      Plug 'jiangmiao/auto-pairs'
      Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+     Plug 'alvan/vim-closetag'
      Plug 'w0rp/ale'
      Plug 'junegunn/fzf.vim'
      Plug 'pangloss/vim-javascript'
@@ -73,6 +74,7 @@ autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+let mapleader = "\<Space>"
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -89,4 +91,7 @@ let g:ycm_add_preview_to_completeopt = 0
 
 let g:ale_linters = {'javascript': ['eslint']}
 
+
 nnoremap gV `[v`]
+inoremap <C-k> <C-o>$
+inoremap <C-j> <C-o>0
