@@ -93,9 +93,10 @@ let g:ale_linters = {'javascript': ['eslint']}
 nnoremap gV `[v`]
 "" use option key to bind insert mode cursor moves, use ctrl+v, alt+ key to
 "" key value, and toggle off using option as meta key in preference
-inoremap ≥ <C-o>$
-inoremap ≤ <C-o>0
+inoremap ‘ <C-o>$
+inoremap “ <C-o>0
 inoremap ˙ <C-o>h
 inoremap ¬ <C-o>l
 inoremap ∆ <C-o>j
 inoremap ˚ <C-o>k
+inoremap ∑ <C-o>w
