@@ -46,7 +46,7 @@ autocmd FileType markdown set sts=2
 autocmd FileType markdown set textwidth=0
 autocmd FileType markdown set omnifunc=htmlcomplete#CompleteTags
 
-" HTML (tab width 2 chr, no wrapping)
+" HTML (tab width 2 chr, no wrapping) 
 autocmd FileType html set sw=2
 autocmd FileType html set ts=2
 autocmd FileType html set sts=2
@@ -74,10 +74,9 @@ autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-let mapleader = "\<Space>"
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
+"let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
@@ -91,7 +90,12 @@ let g:ycm_add_preview_to_completeopt = 0
 
 let g:ale_linters = {'javascript': ['eslint']}
 
-
 nnoremap gV `[v`]
-inoremap <C-k> <C-o>$
-inoremap <C-j> <C-o>0
+"" use option key to bind insert mode cursor moves, use ctrl+v, alt+ key to
+"" key value, and toggle off using option as meta key in preference
+inoremap ≥ <C-o>$
+inoremap ≤ <C-o>0
+inoremap ˙ <C-o>h
+inoremap ¬ <C-o>l
+inoremap ∆ <C-o>j
+inoremap ˚ <C-o>k
