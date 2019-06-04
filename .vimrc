@@ -12,11 +12,19 @@ call plug#begin('~/.vim/plugged')
      Plug 'w0rp/ale'
      Plug 'junegunn/fzf.vim'
      Plug 'pangloss/vim-javascript'
+     Plug 'mileszs/ack.vim'
+     Plug 'tpope/vim-surround'
      Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'} "require cmake, run brew update brew install cmake
+     " markdown syntax highlighting
+     Plug 'gabrielelana/vim-markdown'
+     " post install (yarn install | npm install)
+     Plug 'prettier/vim-prettier', { 'do': 'yarn install' } 
+     Plug 'haishanh/night-owl.vim'
 call plug#end()
 
 syntax on
-color dracula
+syntax enable
+colorscheme night-owl
 set number
 set showcmd
 set cursorline
@@ -80,7 +88,10 @@ let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
-" Start autocompletion after 4 chars
+"silver searcher 
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+"Start autocompletion after 4 chars
 let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_enable_diagnostic_highlighting = 0
@@ -94,9 +105,14 @@ nnoremap gV `[v`]
 "" use option key to bind insert mode cursor moves, use ctrl+v, alt+ key to
 "" key value, and toggle off using option as meta key in preference
 inoremap ‘ <C-o>$
-inoremap “ <C-o>0
+inoremap “ <C-o>^
 inoremap ˙ <C-o>h
 inoremap ¬ <C-o>l
 inoremap ∆ <C-o>j
 inoremap ˚ <C-o>k
 inoremap ∑ <C-o>w
+inoremap ø <C-o>o
+inoremap ≈ <C-o>x
+inoremap ® <C-o>r
+inoremap ∫ <C-o>b
+
