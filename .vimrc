@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'w0rp/ale'
      Plug 'junegunn/fzf.vim'
      Plug 'pangloss/vim-javascript'
+     Plug 'mxw/vim-jsx'
      Plug 'mileszs/ack.vim'
      Plug 'tpope/vim-surround'
      Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'} "require cmake, run brew update brew install cmake
@@ -19,7 +20,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'gabrielelana/vim-markdown'
      " post install (yarn install | npm install)
      Plug 'prettier/vim-prettier', { 'do': 'yarn install' } 
-     Plug 'haishanh/night-owl.vim'
+     Plug 'chloeleichen/night-owl.vim'
 call plug#end()
 
 syntax on
