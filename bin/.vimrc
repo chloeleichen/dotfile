@@ -7,25 +7,52 @@ endif
 
 call plug#begin('~/.vim/plugged')
      Plug 'jiangmiao/auto-pairs'
-     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
      Plug 'alvan/vim-closetag'
-     Plug 'w0rp/ale'
+     Plug 'tpope/vim-surround'
+
+     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+     "require silveer search_ag
      Plug 'junegunn/fzf.vim'
+     "linting tool
+     Plug 'w0rp/ale'
+
      Plug 'pangloss/vim-javascript'
-     Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'} "require cmake, run brew update brew install cmake
+     Plug 'mxw/vim-jsx'
+
+     "typescript support 
+     Plug 'HerringtonDarkholme/yats.vim'
+
+     "full projejct search by keyword
+     Plug 'mileszs/ack.vim'
+     
+     " markdown syntax highlighting
+     Plug 'gabrielelana/vim-markdown'
+    
+     " auto complete
+     Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'}
+
+     "prettier
+     Plug 'prettier/vim-prettier', { 'do': 'yarn install' } 
+
+     "theme
+     Plug 'mhartington/oceanic-next'
+     
 call plug#end()
 
 syntax on
-color dracula
+syntax enable
+
 set number
+colorscheme OceanicNext
+set background=dark
 set showcmd
 set cursorline
 filetype indent on
-set wildmenu 
+set wildmenu
 set showmatch
 set incsearch
-set hlsearch 
-set foldenable 
+set hlsearch
+set foldenable
 set hidden
 set foldlevelstart=10
 set foldnestmax=10
@@ -46,7 +73,7 @@ autocmd FileType markdown set sts=2
 autocmd FileType markdown set textwidth=0
 autocmd FileType markdown set omnifunc=htmlcomplete#CompleteTags
 
-" HTML (tab width 2 chr, no wrapping) 
+" HTML (tab width 2 chr, no wrapping)
 autocmd FileType html set sw=2
 autocmd FileType html set ts=2
 autocmd FileType html set sts=2
@@ -80,7 +107,10 @@ let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
-" Start autocompletion after 4 chars
+"silver searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+"Start autocompletion after 4 chars
 let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_enable_diagnostic_highlighting = 0
@@ -88,7 +118,7 @@ let g:ycm_enable_diagnostic_highlighting = 0
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
 
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint', 'flow']}
 
 nnoremap gV `[v`]
 "" use option key to bind insert mode cursor moves, use ctrl+v, alt+ key to
@@ -100,3 +130,25 @@ inoremap ¬ <C-o>l
 inoremap ∆ <C-o>j
 inoremap ˚ <C-o>k
 inoremap ∑ <C-o>w
+inoremap ø <C-o>o
+inoremap ≈ <C-o>x
+inoremap ® <C-o>r
+inoremap ∫ <C-o>b
+
+"vim with flow type settings
+" Asynchronous Lint Engine (ALE)
+" Limit linters used for JavaScript.
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+let g:ale_sign_error = 'X' " could use emoji
+let g:ale_sign_warning = '?' " could use emoji
+let g:ale_statusline_format = ['X %d', '? %d', '']
+" %linter% is the name of the linter that provided the message
+" %s is the error or warning message
+let g:ale_echo_msg_format = '%linter% says %s'
+" Map keys to navigate between lines with errors and warnings.
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
+
+
+
